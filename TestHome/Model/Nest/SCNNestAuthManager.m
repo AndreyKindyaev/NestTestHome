@@ -8,14 +8,22 @@
 
 #import "SCNNestAuthManager.h"
 
+#import <AFHTTPSessionManager.h>
 #import "SCNNestAuthToken.h"
 
 static NSString *const kNestAPIDomain = @"home.nest.com";
 static NSString *const kNestClientId = @"7c046662-65fe-4884-905f-23d209710343";
 static NSString *const kNestClientSecret = @"0edw2mQARii1BQfw7zmG84wsz";
 static NSString *const kNestState = @"NestState";
+static NSString *const kRedirectUrlString = @"https://scnsoft.com/TestHome";
 
 static NSString *const kAccessTokenKey = @"AccessTokenKey";
+
+@interface SCNNestAuthManager ()
+
+@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+
+@end
 
 @implementation SCNNestAuthManager
 
@@ -23,10 +31,19 @@ static NSString *const kAccessTokenKey = @"AccessTokenKey";
     static SCNNestAuthManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNestAPIDomain]];
-        sharedInstance.responseSerializer = [AFJSONResponseSerializer serializer];
+        sharedInstance = [self new];
     });
     return sharedInstance;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (nil != self) {
+        AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kNestAPIDomain]];
+        sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.sessionManager = sessionManager;
+    }
+    return self;
 }
 
 - (NSString *)webAuthUrl {
@@ -45,13 +62,25 @@ static NSString *const kAccessTokenKey = @"AccessTokenKey";
         }
     };
     NSString *urlString = [self _accessTokenUrlStringWithAuthCode:authCode];
-    [self POST:urlString parameters:nil constructingBodyWithBlock:nil progress:nil success:
+    __weak typeof(self) weakSelf = self;
+    [self.sessionManager POST:urlString parameters:nil constructingBodyWithBlock:nil progress:nil success:
      ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         
-         safeCompletion(nil);
+         NSError *error = nil;
+         SCNNestAuthToken *token = [MTLJSONAdapter modelOfClass:[SCNNestAuthToken class]
+                                             fromJSONDictionary:responseObject
+                                                          error:&error];
+         if (nil == error) {
+             [weakSelf _setLocalAuthToken:token];
+         }
+         safeCompletion(error);
      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          safeCompletion(error);
      }];
+}
+
+- (BOOL)isRedirectUrl:(NSURL *)url {
+    NSURL *redirectUrl = [NSURL URLWithString:kRedirectUrlString];
+    return [[url host] isEqualToString:[redirectUrl host]];
 }
 
 #pragma mark - Private
@@ -66,6 +95,12 @@ static NSString *const kAccessTokenKey = @"AccessTokenKey";
         localAuthToken = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
     }
     return localAuthToken;
+}
+
+- (void)_setLocalAuthToken:(SCNNestAuthToken *)token {
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:token];
+    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:kAccessTokenKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

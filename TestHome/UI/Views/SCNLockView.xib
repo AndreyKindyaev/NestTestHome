@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SCNLockView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDv-ut-Cuh">
+                    <rect key="frame" x="264" y="258" width="72" height="85"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="iR9-M6-2ie">
+                            <rect key="frame" x="26" y="15" width="20" height="20"/>
+                            <animations/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-Vq-RI5">
+                            <rect key="frame" x="15" y="50" width="42" height="20"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="iR9-M6-2ie" secondAttribute="centerX" id="5YO-5o-oyQ"/>
+                        <constraint firstAttribute="bottom" secondItem="kbC-Vq-RI5" secondAttribute="bottom" constant="15" id="7XL-9c-Fbj"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iR9-M6-2ie" secondAttribute="trailing" constant="15" id="Ch3-Eb-PjQ"/>
+                        <constraint firstItem="iR9-M6-2ie" firstAttribute="top" secondItem="MDv-ut-Cuh" secondAttribute="top" constant="15" id="Pgn-11-i1L"/>
+                        <constraint firstItem="iR9-M6-2ie" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MDv-ut-Cuh" secondAttribute="leading" constant="15" id="X5j-F9-qtB"/>
+                        <constraint firstAttribute="trailing" secondItem="kbC-Vq-RI5" secondAttribute="trailing" priority="750" constant="15" id="XZu-cV-5Zh"/>
+                        <constraint firstItem="kbC-Vq-RI5" firstAttribute="top" secondItem="iR9-M6-2ie" secondAttribute="bottom" constant="15" id="bvq-Gy-M1b"/>
+                        <constraint firstItem="kbC-Vq-RI5" firstAttribute="leading" secondItem="MDv-ut-Cuh" secondAttribute="leading" priority="750" constant="15" id="zyw-Vc-bbP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="MDv-ut-Cuh" secondAttribute="centerX" id="541-xt-n52"/>
+                <constraint firstAttribute="centerY" secondItem="MDv-ut-Cuh" secondAttribute="centerY" id="my6-wA-LLs"/>
+            </constraints>
+            <connections>
+                <outlet property="darkView" destination="MDv-ut-Cuh" id="gep-BB-eTr"/>
+                <outlet property="titleLabel" destination="kbC-Vq-RI5" id="FpP-ZO-0bd"/>
+            </connections>
+        </view>
+    </objects>
+</document>

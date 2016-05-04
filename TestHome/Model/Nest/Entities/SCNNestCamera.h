@@ -6,8 +6,14 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
+#import "SCNNestDevice.h"
 
-@interface SCNNestCamera : MTLModel <MTLJSONSerializing>
+@class SCNNestCameraEvent;
+@interface SCNNestCamera : SCNNestDevice
+
+@property (nonatomic) BOOL isStreaming;
+@property (nonatomic) BOOL isAudioInputEnabled;
+@property (nonatomic, strong) NSDate *lastIsOnlineChange;
+@property (nonatomic, strong) SCNNestCameraEvent *lastEvent;
 
 @end

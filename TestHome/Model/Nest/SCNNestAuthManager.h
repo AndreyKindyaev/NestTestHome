@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFHTTPSessionManager.h>
 
-@interface SCNNestAuthManager : AFHTTPSessionManager
+@interface SCNNestAuthManager : NSObject
 
 + (instancetype)sharedInstance;
 
@@ -17,5 +16,6 @@
 - (NSString *)validToken;
 
 - (void)getTokenByAuthCode:(NSString *)authCode completion:(void(^)(NSError *error))completion;
+- (BOOL)isRedirectUrl:(NSURL *)url;
 
 @end
