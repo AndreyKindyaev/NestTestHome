@@ -29,7 +29,7 @@
 
 + (instancetype)providerWithUpdateBlock:(void(^)(NSError *error))updateBlock {
     SCNStructuresDataProvider *provider = [self new];
-    [provider setUpdateBlock:updateBlock];
+    [provider _setUpdateBlock:updateBlock];
     return provider;
 }
 
@@ -41,7 +41,16 @@
     return self;
 }
 
-- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock {
+- (NSInteger)numberOfStructures {
+    return self.structures.count;
+}
+
+- (SCNNestStructure *)structureAtIndex:(NSInteger)index {
+    return self.structures[index];
+}
+
+#pragma mark - Private
+- (void)_setUpdateBlock:(void(^)(NSError *error))updateBlock {
     [[SCNNestFirebaseManager sharedInstance] observeUrl:[self _observerUrl]
                                         withObserverKey:self.uniqueKey
                                             updateBlock:
@@ -63,15 +72,6 @@
      }];
 }
 
-- (NSInteger)numberOfStructures {
-    return self.structures.count;
-}
-
-- (SCNNestStructure *)structureAtIndex:(NSInteger)index {
-    return self.structures[index];
-}
-
-#pragma mark - Private
 - (NSString *)_observerUrl {
     return @"structures";
 }

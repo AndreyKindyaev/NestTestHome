@@ -26,30 +26,7 @@
                                            @"isManualTestActive" : @"is_manual_test_active",
                                            @"lastManualTestTime" : @"last_manual_test_time",
                                            
-                                           @"uiColorState" : @"ui_color_state",
-                                           
-                                           @"hasLeaf" : @"has_leaf",
-                                           
-                                           @"temperatureScale" : @"temperature_scale",
-                                           
-                                           @"targetTemparatureF" : @"target_temperature_f",
-                                           @"targetTemperatureHighF" : @"target_temperature_high_f",
-                                           @"targetTemperatureLowF" : @"target_temperature_low_f",
-                                           @"awayTemperatureHighF" : @"away_temperature_high_f",
-                                           @"awayTemperatureLowF" : @"away_temperature_low_f",
-                                           @"ambientTemperatureF" : @"ambient_temperature_f",
-                                           
-                                           @"targetTemparatureC" : @"target_temperature_c",
-                                           @"targetTemperatureHighC" : @"target_temperature_high_c",
-                                           @"targetTemperatureLowC" : @"target_temperature_low_c",
-                                           @"awayTemperatureHighC" : @"away_temperature_high_c",
-                                           @"awayTemperatureLowC" : @"away_temperature_low_c",
-                                           @"ambientTemperatureC" : @"ambient_temperature_c",
-                                           
-                                           @"hvacMode" : @"hvac_mode",
-                                           @"hvacState" : @"hvac_state",
-                                           
-                                           @"humidity" : @"humidity"}];
+                                           @"uiColorState" : @"ui_color_state"}];
     return dictionary;
 }
 

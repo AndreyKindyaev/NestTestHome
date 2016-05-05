@@ -13,8 +13,6 @@
 
 + (instancetype)providerWithUpdateBlock:(void(^)(NSError *error))updateBlock;
 
-- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock;
-
 - (NSInteger)numberOfStructures;
 - (SCNNestStructure *)structureAtIndex:(NSInteger)index;
 

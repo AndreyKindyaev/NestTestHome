@@ -12,6 +12,7 @@
 #import "UITableView+SCNUtils.h"
 #import "UIView+SCNLockView.h"
 #import "SCNSettings.h"
+#import "UIViewController+SCNErrorAlerts.h"
 
 @interface SCNStructuresViewController ()
 
@@ -31,6 +32,9 @@
     [self.view scnShowLockViewWithText:@"Loading"];
     __weak typeof(self) weakSelf = self;
     self.provider = [SCNStructuresDataProvider providerWithUpdateBlock:^(NSError *error) {
+        if (nil != error) {
+            [weakSelf scnShowAlertWithError:error actionBlock:nil];
+        }
         [weakSelf.tableView reloadData];
         [weakSelf.view scnHideLockView];
     }];
@@ -56,6 +60,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [SCNSettings sharedInstance].activeStructureId = [self _structureAtIndexPath:indexPath].structureId;
     [tableView reloadData];
+    self.tabBarController.selectedIndex = 1;
 }
 
 #pragma mark - Private

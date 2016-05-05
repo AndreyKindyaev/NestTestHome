@@ -14,6 +14,9 @@
 @property (nonatomic) BOOL isStreaming;
 @property (nonatomic) BOOL isAudioInputEnabled;
 @property (nonatomic, strong) NSDate *lastIsOnlineChange;
+@property (nonatomic) BOOL isVideoHistoryEnabled;
+@property (nonatomic, strong) NSString *webUrl;
+@property (nonatomic, strong) NSString *appUrl;
 @property (nonatomic, strong) SCNNestCameraEvent *lastEvent;
 
 @end

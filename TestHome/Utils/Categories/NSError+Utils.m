@@ -22,6 +22,12 @@ NSString *const SCNErrorDomain = @"SCNErrorDomain";
 + (NSDictionary *)_userInfoForCode:(SCNErrorCode)code {
     NSDictionary *userInfo = nil;
     switch (code) {
+        case SCNErrorCodeWrongDataFormat:
+            userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Wrong data format", nil)};
+            break;
+        case SCNErrorCodeInvalidObserver:
+            userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Invalid observer", nil)};
+            break;
         default:
             break;
     }

@@ -53,14 +53,14 @@ static NSString *const kCodeKey = @"code";
             __weak typeof(self) weakSelf = self;
             [authManager getTokenByAuthCode:authCode completion:^(NSError *error) {
                 if (nil != error) {
-                    NSLog(@"can't get auth token by code:%@", authCode);
+                    SCNLog(@"can't get auth token by code:%@", authCode);
                     [weakSelf _loadAuthUrl];
                 } else {
                     [weakSelf _switchToCamera];
                 }
             }];
         } else {
-            NSLog(@"oops, something went wrong. redirect url doesn't contain auth code");
+            SCNLog(@"oops, something went wrong. redirect url doesn't contain auth code");
             [self _loadAuthUrl];
         }
     }

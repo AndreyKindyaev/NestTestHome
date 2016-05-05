@@ -65,7 +65,6 @@
      ^(FDataSnapshot *snapshot) {
          id value = snapshot.value;
          NSError *error = nil;
-         NSLog(@"_observerUrl: %@ error: %@ value: %@", [weakSelf _observerUrl], error, value);
          if ([value isKindOfClass:[NSString class]]) {
              weakSelf.away = [((NSNumber *)[[SCNNestStructure awayJSONTransformer] transformedValue:value]) integerValue];
          } else {
