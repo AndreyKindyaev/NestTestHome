@@ -8,8 +8,6 @@
 
 #import "SCNLockView.h"
 
-#import "UIView+SCNUtils.h"
-
 static const CGFloat kDarkViewCornerRadius = 10.f;
 
 @interface SCNLockView ()

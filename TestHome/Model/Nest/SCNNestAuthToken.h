@@ -6,9 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <Mantle/Mantle.h>
-
 @interface SCNNestAuthToken : MTLModel <MTLJSONSerializing>
 
 + (instancetype)tokenWithString:(NSString *)string expirationDate:(NSDate *)expirationDate;

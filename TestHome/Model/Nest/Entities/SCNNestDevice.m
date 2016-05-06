@@ -18,7 +18,7 @@
              @"locationId": @"where_id",
              @"name": @"name",
              @"longName": @"name_long",
-             @"isOnline": @"is_online"};
+             @"isOnlineNumber": @"is_online"};
 }
 
 @end

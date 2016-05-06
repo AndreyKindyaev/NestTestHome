@@ -15,6 +15,25 @@
 #   define SCNLog(...)
 #endif
 
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
 
+    #import <Mantle/Mantle.h>
+
+    // categories
+    #import "NSError+Utils.h"
+    #import "NSString+SCNNest.h"
+    #import "MTLValueTransformer+SCNNest.h"
+    #import "MTLJSONAdapter+SCNNest.h"
+    #import "UITableView+SCNUtils.h"
+    #import "UIView+SCNUtils.h"
+    #import "UIView+SCNLockView.h"
+    #import "UIViewController+SCNAlerts.h"
+    #import "UIViewController+SCNErrorAlerts.h"
+    #import "NSDate+SCNAppDates.h"
+
+    // presentation
+    #import "SCNNestDevice+Presentation.h"
+    #import "SCNNestSmokeCOAlarm+Presentation.h"
 
 #endif /* PrefixHeader_pch */

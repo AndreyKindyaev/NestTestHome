@@ -11,13 +11,24 @@
 @implementation NSDateFormatter (SCNNest)
 
 + (NSDateFormatter *)scnNestDateFormatter {
-    static NSDateFormatter *serverDateFormatter = nil;
+    static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        serverDateFormatter = [self new];
-        serverDateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+        formatter = [self new];
+        formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
     });
-    return serverDateFormatter;
+    return formatter;
+}
+
+// @"yyyy.MM.dd HH:mm"
++ (NSDateFormatter *)scnUIDateFormatter {
+    static NSDateFormatter *formatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [self new];
+        formatter.dateFormat = @"yyyy.MM.dd HH:mm";
+    });
+    return formatter;
 }
 
 @end

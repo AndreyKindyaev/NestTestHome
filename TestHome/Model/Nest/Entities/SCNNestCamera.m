@@ -8,7 +8,6 @@
 
 #import "SCNNestCamera.h"
 
-#import "MTLValueTransformer+SCNNest.h"
 #import "SCNNestCameraEvent.h"
 
 @implementation SCNNestCamera
@@ -16,10 +15,10 @@
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSMutableDictionary *dictionary = [[super JSONKeyPathsByPropertyKey] mutableCopy];
-    [dictionary addEntriesFromDictionary:@{@"isStreaming" : @"is_streaming",
-                                           @"isAudioInputEnabled" : @"is_audio_input_enabled",
+    [dictionary addEntriesFromDictionary:@{@"isStreamingNumber" : @"is_streaming",
+                                           @"isAudioInputEnabledNumber" : @"is_audio_input_enabled",
                                            @"lastIsOnlineChange" : @"last_is_online_change",
-                                           @"isVideoHistoryEnabled" : @"is_video_history_enabled",
+                                           @"isVideoHistoryEnabledNumber" : @"is_video_history_enabled",
                                            @"webUrl" : @"web_url",
                                            @"appUrl" : @"app_url",
                                            @"lastEvent" : @"last_event"}];

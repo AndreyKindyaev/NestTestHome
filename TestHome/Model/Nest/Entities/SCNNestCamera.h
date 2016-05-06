@@ -11,10 +11,10 @@
 @class SCNNestCameraEvent;
 @interface SCNNestCamera : SCNNestDevice
 
-@property (nonatomic) BOOL isStreaming;
-@property (nonatomic) BOOL isAudioInputEnabled;
+@property (nonatomic, strong) NSNumber *isStreamingNumber;
+@property (nonatomic, strong) NSNumber *isAudioInputEnabledNumber;
 @property (nonatomic, strong) NSDate *lastIsOnlineChange;
-@property (nonatomic) BOOL isVideoHistoryEnabled;
+@property (nonatomic, strong) NSNumber *isVideoHistoryEnabledNumber;
 @property (nonatomic, strong) NSString *webUrl;
 @property (nonatomic, strong) NSString *appUrl;
 @property (nonatomic, strong) SCNNestCameraEvent *lastEvent;

@@ -6,8 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
-
 @class SCNNestSmokeCOAlarm, SCNNestThermostat, SCNNestCamera;
 @interface SCNNestDevicePool : MTLModel <MTLJSONSerializing>
 

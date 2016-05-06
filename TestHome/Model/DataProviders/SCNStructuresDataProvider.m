@@ -9,60 +9,29 @@
 #import "SCNStructuresDataProvider.h"
 
 #import "SCNNestFirebaseManager.h"
-#import <Mantle/Mantle.h>
-#import "NSError+Utils.h"
 #import "SCNSettings.h"
 
 @interface SCNStructuresDataProvider ()
 
-@property (nonatomic, strong) NSString *uniqueKey;
 @property (nonatomic, strong) NSArray<SCNNestStructure *> *structures;
 
 @end
 
 @implementation SCNStructuresDataProvider
 
-- (void)dealloc {
-    [[SCNNestFirebaseManager sharedInstance] removeObserverForUrl:[self _observerUrl]
-                                                  withObserverKey:self.uniqueKey];
-}
-
-+ (instancetype)providerWithUpdateBlock:(void(^)(NSError *error))updateBlock {
-    SCNStructuresDataProvider *provider = [self new];
-    [provider _setUpdateBlock:updateBlock];
-    return provider;
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (nil != self) {
-        _uniqueKey = [[NSUUID UUID] UUIDString];
-    }
-    return self;
-}
-
-- (NSInteger)numberOfStructures {
-    return self.structures.count;
-}
-
-- (SCNNestStructure *)structureAtIndex:(NSInteger)index {
-    return self.structures[index];
-}
-
-#pragma mark - Private
-- (void)_setUpdateBlock:(void(^)(NSError *error))updateBlock {
-    [[SCNNestFirebaseManager sharedInstance] observeUrl:[self _observerUrl]
-                                        withObserverKey:self.uniqueKey
-                                            updateBlock:
+- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock {
+    __weak typeof(self) weakSelf = self;
+    [self observeUrl:@"structures"
+         updateBlock:
      ^(FDataSnapshot *snapshot) {
          id value = snapshot.value;
          NSError *error = nil;
          if ([value isKindOfClass:[NSDictionary class]]) {
              NSArray *jsonStructures = [value allValues];
-             self.structures = [MTLJSONAdapter modelsOfClass:[SCNNestStructure class]
-                                               fromJSONArray:jsonStructures
-                                                       error:&error];
-             [[SCNSettings sharedInstance] updateActiveStructureIdWithAvailableStructures:self.structures];
+             weakSelf.structures = [MTLJSONAdapter modelsOfClass:[SCNNestStructure class]
+                                                   fromJSONArray:jsonStructures
+                                                           error:&error];
+             [[SCNSettings sharedInstance] updateActiveStructureIdWithAvailableStructures:weakSelf.structures];
          } else {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
@@ -72,8 +41,12 @@
      }];
 }
 
-- (NSString *)_observerUrl {
-    return @"structures";
+- (NSInteger)numberOfStructures {
+    return self.structures.count;
+}
+
+- (SCNNestStructure *)structureAtIndex:(NSInteger)index {
+    return self.structures[index];
 }
 
 @end

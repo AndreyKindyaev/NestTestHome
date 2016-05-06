@@ -6,8 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 extern NSString *const SCNErrorDomain;
 
 typedef NS_ENUM(NSInteger, SCNErrorCode) {

@@ -6,8 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @class SCNNestStructure;
 @interface SCNSettings : NSObject
 

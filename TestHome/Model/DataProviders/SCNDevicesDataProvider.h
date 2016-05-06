@@ -6,13 +6,14 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SCNDataProvider.h"
 #import "SCNNestDevice.h"
 
-@interface SCNDevicesDataProvider : NSObject
+@interface SCNDevicesDataProvider : SCNDataProvider
 
-+ (instancetype)providerWithStructureId:(NSString *)structureId
-                            updateBlock:(void(^)(NSError *error))updateBlock;
++ (instancetype)providerWithStructureId:(NSString *)structureId;
+
+- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock;
 
 - (NSInteger)numberOfDeviceTypes;
 - (NSString *)deviceTypeNameAtIndex:(NSInteger)index;

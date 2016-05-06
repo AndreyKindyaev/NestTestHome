@@ -9,11 +9,9 @@
 #import "SCNStructureNameDataProvider.h"
 
 #import "SCNNestFirebaseManager.h"
-#import "NSError+Utils.h"
 
 @interface SCNStructureNameDataProvider ()
 
-@property (nonatomic, strong) NSString *uniqueKey;
 @property (nonatomic, strong) NSString *structureId;
 @property (nonatomic, strong) NSString *name;
 
@@ -21,33 +19,16 @@
 
 @implementation SCNStructureNameDataProvider
 
-- (void)dealloc {
-    [[SCNNestFirebaseManager sharedInstance] removeObserverForUrl:[self _observerUrl]
-                                                  withObserverKey:self.uniqueKey];
-}
-
-+ (instancetype)providerWithStructureId:(NSString *)structureId
-                            updateBlock:(void(^)(NSError *error))updateBlock {
++ (instancetype)providerWithStructureId:(NSString *)structureId {
     SCNStructureNameDataProvider *provider = [self new];
     provider.structureId = structureId;
-    [provider _setUpdateBlock:updateBlock];
     return provider;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (nil != self) {
-        _uniqueKey = [[NSUUID UUID] UUIDString];
-    }
-    return self;
-}
-
-#pragma mark - Private
-- (void)_setUpdateBlock:(void(^)(NSError *error))updateBlock {
+- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock {
     __weak typeof(self) weakSelf = self;
-    [[SCNNestFirebaseManager sharedInstance] observeUrl:[self _observerUrl]
-                                        withObserverKey:self.uniqueKey
-                                            updateBlock:
+    [self observeUrl:[NSString stringWithFormat:@"structures/%@/name", self.structureId]
+         updateBlock:
      ^(FDataSnapshot *snapshot) {
          id value = snapshot.value;
          NSError *error = nil;
@@ -60,10 +41,6 @@
              updateBlock(error);
          }
      }];
-}
-
-- (NSString *)_observerUrl {
-    return [NSString stringWithFormat:@"structures/%@/name", self.structureId];
 }
 
 @end

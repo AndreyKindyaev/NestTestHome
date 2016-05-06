@@ -8,9 +8,6 @@
 
 #import "UIViewController+SCNErrorAlerts.h"
 
-#import "NSError+Utils.h"
-#import "UIViewController+SCNAlerts.h"
-
 @implementation UIViewController (SCNErrorAlerts)
 
 - (void)scnShowAlertWithError:(NSError *)error

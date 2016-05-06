@@ -9,7 +9,6 @@
 #import "SCNNestFirebaseManager.h"
 
 #import "SCNNestAuthManager.h"
-#import "NSError+Utils.h"
 
 @interface SCNNestFirebaseManager ()
 
@@ -17,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *snapshotsByUrl;
 @property (nonatomic, strong) NSMutableDictionary *observersByUrl;
+@property (nonatomic, strong) NSMutableDictionary *updateBlocksByKeyByUrl;
 
 @end
 
@@ -27,7 +27,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [self new];
-        
     });
     return sharedInstance;
 }
@@ -37,6 +36,7 @@
     if (nil != self) {
         self.snapshotsByUrl = [NSMutableDictionary new];
         self.observersByUrl = [NSMutableDictionary new];
+        self.updateBlocksByKeyByUrl = [NSMutableDictionary new];
         self.rootFirebase = [[Firebase alloc] initWithUrl:@"https://developer-api.nest.com/"];
         NSString *validToken = [SCNNestAuthManager sharedInstance].validToken;
         [self.rootFirebase authWithCustomToken:validToken withCompletionBlock:nil];
@@ -52,27 +52,44 @@
             block(snapshot);
         }
     };
-    Firebase *observer = [self.rootFirebase childByAppendingPath:url];
-    __weak typeof(self) weakSelf = self;
-    [observer observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        weakSelf.snapshotsByUrl[url] = snapshot;
-        safeUpdateBlock(snapshot);
-    }];
-    // replace observer (with its update block) for url if exist
-    NSMutableDictionary *observersByKey = self.observersByUrl[url];
-    if (nil == observersByKey) {
-        observersByKey = [NSMutableDictionary new];
-        self.observersByUrl[url] = observersByKey;
+    // set update block
+    NSMutableDictionary *updateBlocksByKey = self.updateBlocksByKeyByUrl[url];
+    if (nil == updateBlocksByKey) {
+        updateBlocksByKey = [NSMutableDictionary new];
+        self.updateBlocksByKeyByUrl[url] = updateBlocksByKey;
     }
-    observersByKey[key] = observer;
+    updateBlocksByKey[key] = [safeUpdateBlock copy];
+    // create observer or return stored snapshot for exist observer
+    Firebase *observer = self.observersByUrl[url];
+    if (nil == observer) {
+        observer = [self.rootFirebase childByAppendingPath:url];
+        self.observersByUrl[url] = observer;
+        __weak typeof(self) weakSelf = self;
+        [observer observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            // update snapshot
+            weakSelf.snapshotsByUrl[url] = snapshot;
+            NSDictionary *updateBlocksByKey = weakSelf.updateBlocksByKeyByUrl[url];
+            [updateBlocksByKey.allValues enumerateObjectsUsingBlock:
+             ^(void (^updateBlock)(FDataSnapshot *snapshot) , NSUInteger idx, BOOL * _Nonnull stop) {
+                 if (nil != updateBlock) {
+                     updateBlock(snapshot);
+                 }
+             }];
+        }];
+    } else {
+        safeUpdateBlock(self.snapshotsByUrl[url]);
+    }
 }
 
 - (void)removeObserverForUrl:(NSString *)url
              withObserverKey:(NSString *)key {
-    NSMutableDictionary *observersByKey = self.observersByUrl[url];
-    Firebase *observer = observersByKey[key];
+    Firebase *observer = self.observersByUrl[url];
     [observer removeAllObservers];
-    [observersByKey removeObjectForKey:key];
+    [self.observersByUrl removeObjectForKey:url];
+    
+    [self.snapshotsByUrl removeObjectForKey:url];
+    
+    [self.updateBlocksByKeyByUrl[url] removeObjectForKey:key];
 }
 
 - (void)setValue:(id)value
@@ -81,10 +98,8 @@
   withCompletion:(void(^)(NSError *error))completion {
     // IMPORTANT to set withLocalEvents to NO
     // Read more here: https://www.firebase.com/docs/transactions.html
-    NSMutableDictionary *observersByKey = self.observersByUrl[url];
-    Firebase *observer = nil;
-    if (nil != observersByKey) {
-        observer = observersByKey[observerKey];
+    Firebase *observer = self.observersByUrl[url];
+    if (nil != observer) {
         [observer runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
             [currentData setValue:value];
             return [FTransactionResult successWithValue:currentData];

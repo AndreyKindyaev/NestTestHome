@@ -8,8 +8,6 @@
 
 #import "SCNNestThermostat.h"
 
-#import "MTLValueTransformer+SCNNest.h"
-
 @implementation SCNNestThermostat
 
 #pragma mark - MTLJSONSerializing
@@ -17,15 +15,15 @@
     NSMutableDictionary *dictionary = [[super JSONKeyPathsByPropertyKey] mutableCopy];
     [dictionary addEntriesFromDictionary:@{@"locale" : @"locale",
                                            
-                                           @"lastConnection" : @"last_connection",
+                                           @"lastConnectionDate" : @"last_connection",
                                            
-                                           @"canCool" : @"can_cool",
-                                           @"canHeat" : @"can_heat",
-                                           @"isUsingEmergencyHeat" : @"is_using_emergency_heat",
-                                           @"hasFan" : @"has_fan",
-                                           @"fanTimerActive" : @"fan_timer_active",
+                                           @"canCoolNumber" : @"can_cool",
+                                           @"canHeatNumber" : @"can_heat",
+                                           @"isUsingEmergencyHeatNumber" : @"is_using_emergency_heat",
+                                           @"hasFanNumber" : @"has_fan",
+                                           @"fanTimerActiveNumber" : @"fan_timer_active",
                                            @"fanTimerTimeout" : @"fan_timer_timeout",
-                                           @"hasLeaf" : @"has_leaf",
+                                           @"hasLeafNumber" : @"has_leaf",
                                            
                                            @"temperatureScale" : @"temperature_scale",
                                            
@@ -50,7 +48,7 @@
     return dictionary;
 }
 
-+ (NSValueTransformer *)lastConnectionJSONTransformer {
++ (NSValueTransformer *)lastConnectionDateJSONTransformer {
     return [MTLValueTransformer scnNestJSONDateTransformer];
 }
 

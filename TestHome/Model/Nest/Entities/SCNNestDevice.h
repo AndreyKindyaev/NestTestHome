@@ -6,8 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
-
 @interface SCNNestDevice : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong) NSString *deviceId;
@@ -18,6 +16,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *longName;
 
-@property (nonatomic) BOOL isOnline;
+@property (nonatomic, strong) NSNumber *isOnlineNumber;
 
 @end

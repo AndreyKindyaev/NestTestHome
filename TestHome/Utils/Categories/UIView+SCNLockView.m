@@ -8,8 +8,6 @@
 
 #import "UIView+SCNLockView.h"
 
-#import "UIView+SCNUtils.h"
-
 #import <objc/runtime.h>
 #import "SCNLockView.h"
 

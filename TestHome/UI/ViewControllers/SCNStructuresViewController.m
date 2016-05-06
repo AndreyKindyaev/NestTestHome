@@ -9,10 +9,7 @@
 #import "SCNStructuresViewController.h"
 
 #import "SCNStructuresDataProvider.h"
-#import "UITableView+SCNUtils.h"
-#import "UIView+SCNLockView.h"
 #import "SCNSettings.h"
-#import "UIViewController+SCNErrorAlerts.h"
 
 @interface SCNStructuresViewController ()
 
@@ -31,7 +28,8 @@
     
     [self.view scnShowLockViewWithText:@"Loading"];
     __weak typeof(self) weakSelf = self;
-    self.provider = [SCNStructuresDataProvider providerWithUpdateBlock:^(NSError *error) {
+    self.provider = [SCNStructuresDataProvider new];
+    [self.provider setUpdateBlock:^(NSError *error) {
         if (nil != error) {
             [weakSelf scnShowAlertWithError:error actionBlock:nil];
         }

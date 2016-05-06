@@ -30,15 +30,15 @@ typedef NS_ENUM(NSInteger, SCNNestHVACState) {
 
 @property (nonatomic, strong) NSString *locale;
 
-@property (nonatomic, strong) NSDate *lastConnection;
+@property (nonatomic, strong) NSDate *lastConnectionDate;
 
-@property (nonatomic) BOOL canCool;
-@property (nonatomic) BOOL canHeat;
-@property (nonatomic) BOOL isUsingEmergencyHeat;
-@property (nonatomic) BOOL hasFan;
-@property (nonatomic) BOOL fanTimerActive;
+@property (nonatomic, strong) NSNumber *canCoolNumber;
+@property (nonatomic, strong) NSNumber *canHeatNumber;
+@property (nonatomic, strong) NSNumber *isUsingEmergencyHeatNumber;
+@property (nonatomic, strong) NSNumber *hasFanNumber;
+@property (nonatomic, strong) NSNumber *fanTimerActiveNumber;
 @property (nonatomic, strong) NSDate *fanTimerTimeout;
-@property (nonatomic) BOOL hasLeaf;
+@property (nonatomic, strong) NSNumber *hasLeafNumber;
 
 // temperature
 @property (nonatomic) SCNNestTemperatureScale temperatureScale;

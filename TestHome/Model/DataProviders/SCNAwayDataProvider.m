@@ -9,12 +9,10 @@
 #import "SCNAwayDataProvider.h"
 
 #import "SCNNestFirebaseManager.h"
-#import "NSError+Utils.h"
 #import "SCNNestStructure.h"
 
 @interface SCNAwayDataProvider ()
 
-@property (nonatomic, strong) NSString *uniqueKey;
 @property (nonatomic, strong) NSString *structureId;
 @property (nonatomic) SCNNestAwayState away;
 
@@ -22,46 +20,16 @@
 
 @implementation SCNAwayDataProvider
 
-- (void)dealloc {
-    [[SCNNestFirebaseManager sharedInstance] removeObserverForUrl:[self _observerUrl]
-                                                  withObserverKey:self.uniqueKey];
-}
-
-+ (instancetype)providerWithStructureId:(NSString *)structureId
-                            updateBlock:(void(^)(NSError *error))updateBlock {
++ (instancetype)providerWithStructureId:(NSString *)structureId {
     SCNAwayDataProvider *provider = [self new];
     provider.structureId = structureId;
-    [provider _setUpdateBlock:updateBlock];
     return provider;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (nil != self) {
-        _uniqueKey = [[NSUUID UUID] UUIDString];
-    }
-    return self;
-}
-
-- (void)setAway:(SCNNestAwayState)away completion:(void(^)(NSError *error))completion {
-    NSString *awayString = [[SCNNestStructure awayJSONTransformer] reverseTransformedValue:@(away)];
-    [[SCNNestFirebaseManager sharedInstance] setValue:awayString
-                                               forUrl:[self _observerUrl]
-                                          observerKey:self.uniqueKey
-                                       withCompletion:
-     ^(NSError *error) {
-         if (nil != completion) {
-             completion(error);
-         }
-     }];
-}
-
-#pragma mark - Private
-- (void)_setUpdateBlock:(void(^)(NSError *error))updateBlock {
+- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock {
     __weak typeof(self) weakSelf = self;
-    [[SCNNestFirebaseManager sharedInstance] observeUrl:[self _observerUrl]
-                                        withObserverKey:self.uniqueKey
-                                            updateBlock:
+    [self observeUrl:[NSString stringWithFormat:@"structures/%@/away", self.structureId]
+         updateBlock:
      ^(FDataSnapshot *snapshot) {
          id value = snapshot.value;
          NSError *error = nil;
@@ -76,8 +44,9 @@
      }];
 }
 
-- (NSString *)_observerUrl {
-    return [NSString stringWithFormat:@"structures/%@/away", self.structureId];
+- (void)setAway:(SCNNestAwayState)away completion:(void(^)(NSError *error))completion {
+    NSString *awayString = [[SCNNestStructure awayJSONTransformer] reverseTransformedValue:@(away)];
+    [self setValue:awayString withCompletion:completion];
 }
 
 @end

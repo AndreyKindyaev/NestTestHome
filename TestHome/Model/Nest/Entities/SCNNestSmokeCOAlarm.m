@@ -8,8 +8,6 @@
 
 #import "SCNNestSmokeCOAlarm.h"
 
-#import "MTLValueTransformer+SCNNest.h"
-
 @implementation SCNNestSmokeCOAlarm
 
 #pragma mark - MTLJSONSerializing
@@ -17,17 +15,21 @@
     NSMutableDictionary *dictionary = [[super JSONKeyPathsByPropertyKey] mutableCopy];
     [dictionary addEntriesFromDictionary:@{@"locale" : @"locale",
                                            
-                                           @"lastConnection" : @"last_connection",
+                                           @"lastConnectionDate" : @"last_connection",
                                            
-                                           @"batteryHealth" : @"battery_health",
-                                           @"coAlarmState" : @"co_alarm_state",
-                                           @"smokeAlarmState" : @"smoke_alarm_state",
+                                           @"batteryHealthNumber" : @"battery_health",
+                                           @"coAlarmStateNumber" : @"co_alarm_state",
+                                           @"smokeAlarmStateNumber" : @"smoke_alarm_state",
                                            
-                                           @"isManualTestActive" : @"is_manual_test_active",
+                                           @"isManualTestActiveNumber" : @"is_manual_test_active",
                                            @"lastManualTestTime" : @"last_manual_test_time",
                                            
-                                           @"uiColorState" : @"ui_color_state"}];
+                                           @"uiColorStateNumber" : @"ui_color_state"}];
     return dictionary;
+}
+
++ (NSValueTransformer *)lastConnectionDateJSONTransformer {
+    return [MTLValueTransformer scnNestJSONDateTransformer];
 }
 
 + (NSValueTransformer *)batteryHealthJSONTransformer {

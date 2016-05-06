@@ -6,13 +6,12 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SCNDataProvider.h"
 #import "SCNNestStructure.h"
 
-@interface SCNStructuresDataProvider : NSObject
+@interface SCNStructuresDataProvider : SCNDataProvider
 
-+ (instancetype)providerWithUpdateBlock:(void(^)(NSError *error))updateBlock;
-
+- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock;
 - (NSInteger)numberOfStructures;
 - (SCNNestStructure *)structureAtIndex:(NSInteger)index;
 

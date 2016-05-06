@@ -8,7 +8,6 @@
 
 #import "SCNNestDevicePool.h"
 
-#import "MTLJSONAdapter+SCNNest.h"
 #import "SCNNestCamera.h"
 #import "SCNNestThermostat.h"
 #import "SCNNestSmokeCOAlarm.h"

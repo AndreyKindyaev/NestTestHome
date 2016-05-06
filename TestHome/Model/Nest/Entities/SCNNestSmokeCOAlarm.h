@@ -7,7 +7,6 @@
 //
 
 #import "SCNNestDevice.h"
-#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, SCNNestBatteryHealth) {
     SCNNestBatteryHealthOk,
@@ -37,15 +36,15 @@ typedef NS_ENUM(NSInteger, SCNNestAlarmColorState) {
 
 @property (nonatomic, strong) NSString *locale;
 
-@property (nonatomic, strong) NSDate *lastConnection;
+@property (nonatomic, strong) NSDate *lastConnectionDate;
 
-@property (nonatomic) SCNNestBatteryHealth batteryHealth;
-@property (nonatomic) SCNNestCOAlarmState coAlarmState;
-@property (nonatomic) SCNNestSmokeAlarmState smokeAlarmState;
+@property (nonatomic, strong) NSNumber *batteryHealthNumber;
+@property (nonatomic, strong) NSNumber *coAlarmStateNumber;
+@property (nonatomic, strong) NSNumber *smokeAlarmStateNumber;
 
-@property (nonatomic) BOOL isManualTestActive;
+@property (nonatomic, strong) NSNumber *isManualTestActiveNumber;
 @property (nonatomic, strong) NSDate *lastManualTestTime;
 
-@property (nonatomic) SCNNestAlarmColorState uiColorState;
+@property (nonatomic, strong) NSNumber *uiColorStateNumber;
 
 @end

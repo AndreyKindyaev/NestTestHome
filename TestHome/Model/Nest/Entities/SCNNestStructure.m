@@ -8,8 +8,6 @@
 
 #import "SCNNestStructure.h"
 
-#import "MTLValueTransformer+SCNNest.h"
-#import "MTLJSONAdapter+SCNNest.h"
 #import "SCNNestLocation.h"
 
 @implementation SCNNestStructure

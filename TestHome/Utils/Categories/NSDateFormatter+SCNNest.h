@@ -6,11 +6,12 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface NSDateFormatter (SCNNest)
 
 // @"yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 + (NSDateFormatter *)scnNestDateFormatter;
+
+// @"yyyy.MM.dd HH:mm"
++ (NSDateFormatter *)scnUIDateFormatter;
 
 @end

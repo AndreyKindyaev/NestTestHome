@@ -6,8 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
-
 typedef NS_ENUM(NSInteger, SCNNestAwayState) {
     SCNNestAwayStateUnknown,
     SCNNestAwayStateHome,

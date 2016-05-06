@@ -6,12 +6,10 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
-
 @interface SCNNestCameraEvent : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic) BOOL hasSound;
-@property (nonatomic) BOOL hasMotion;
+@property (nonatomic, strong) NSNumber *hasSoundNumber;
+@property (nonatomic, strong) NSNumber *hasMotionNumber;
 
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;

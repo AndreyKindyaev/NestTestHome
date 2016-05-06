@@ -6,13 +6,13 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SCNDataProvider.h"
 
-@interface SCNStructureNameDataProvider : NSObject
+@interface SCNStructureNameDataProvider : SCNDataProvider
 
-+ (instancetype)providerWithStructureId:(NSString *)structureId
-                            updateBlock:(void(^)(NSError *error))updateBlock;
++ (instancetype)providerWithStructureId:(NSString *)structureId;
 
+- (void)setUpdateBlock:(void(^)(NSError *error))updateBlock;
 - (NSString *)name;
 
 @end

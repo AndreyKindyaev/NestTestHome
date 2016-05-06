@@ -8,14 +8,12 @@
 
 #import "SCNNestCameraEvent.h"
 
-#import "MTLValueTransformer+SCNNest.h"
-
 @implementation SCNNestCameraEvent
 
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{@"hasSound": @"has_sound",
-             @"hasMotion": @"has_motion",
+    return @{@"hasSoundNumber": @"has_sound",
+             @"hasMotionNumber": @"has_motion",
              @"startTime": @"start_time",
              @"endTime": @"end_time",
              @"urlsExpireTime": @"urls_expire_time",

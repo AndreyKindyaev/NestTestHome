@@ -6,8 +6,6 @@
 //  Copyright © 2016 ScienceSoft. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface SCNLoginViewController : UIViewController
 
 @end
