@@ -30,11 +30,11 @@
     [self observeUrl:[NSString stringWithFormat:@"structures/%@/name", self.structureId]
          updateBlock:
      ^(FDataSnapshot *snapshot) {
-         id value = snapshot.value;
+         id value = snapshot.scnValue;
          NSError *error = nil;
          if ([value isKindOfClass:[NSString class]]) {
              weakSelf.name = value;
-         } else {
+         } else if (nil != value) {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
          if (nil != updateBlock) {

@@ -28,13 +28,13 @@
     [self observeUrl:[NSString stringWithFormat:@"devices/smoke_co_alarms/%@", self.deviceId]
          updateBlock:
      ^(FDataSnapshot *snapshot) {
-         id value = snapshot.value;
+         id value = snapshot.scnValue;
          NSError *error = nil;
          if ([value isKindOfClass:[NSDictionary class]]) {
              weakSelf.smokeCOAlarm = [MTLJSONAdapter modelOfClass:[SCNNestSmokeCOAlarm class]
                                                fromJSONDictionary:value
                                                             error:&error];
-         } else {
+         } else if (nil != value) {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
          if (nil != updateBlock) {

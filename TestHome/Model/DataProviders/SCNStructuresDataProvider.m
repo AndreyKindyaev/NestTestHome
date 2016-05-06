@@ -9,7 +9,6 @@
 #import "SCNStructuresDataProvider.h"
 
 #import "SCNNestFirebaseManager.h"
-#import "SCNSettings.h"
 
 @interface SCNStructuresDataProvider ()
 
@@ -24,15 +23,14 @@
     [self observeUrl:@"structures"
          updateBlock:
      ^(FDataSnapshot *snapshot) {
-         id value = snapshot.value;
+         id value = snapshot.scnValue;
          NSError *error = nil;
          if ([value isKindOfClass:[NSDictionary class]]) {
              NSArray *jsonStructures = [value allValues];
              weakSelf.structures = [MTLJSONAdapter modelsOfClass:[SCNNestStructure class]
                                                    fromJSONArray:jsonStructures
                                                            error:&error];
-             [[SCNSettings sharedInstance] updateActiveStructureIdWithAvailableStructures:weakSelf.structures];
-         } else {
+         } else if (nil != value) {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
          if (nil != updateBlock) {

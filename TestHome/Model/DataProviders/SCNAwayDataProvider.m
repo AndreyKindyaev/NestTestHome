@@ -31,11 +31,11 @@
     [self observeUrl:[NSString stringWithFormat:@"structures/%@/away", self.structureId]
          updateBlock:
      ^(FDataSnapshot *snapshot) {
-         id value = snapshot.value;
+         id value = snapshot.scnValue;
          NSError *error = nil;
          if ([value isKindOfClass:[NSString class]]) {
              weakSelf.away = [((NSNumber *)[[SCNNestStructure awayJSONTransformer] transformedValue:value]) integerValue];
-         } else {
+         } else if (nil != value) {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
          if (nil != updateBlock) {

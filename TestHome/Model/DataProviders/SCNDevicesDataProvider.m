@@ -31,7 +31,7 @@
     [self observeUrl:@"devices"
          updateBlock:
      ^(FDataSnapshot *snapshot) {
-         id value = snapshot.value;
+         id value = snapshot.scnValue;
          NSError *error = nil;
          if ([value isKindOfClass:[NSDictionary class]]) {
              SCNNestDevicePool *devicePool = [MTLJSONAdapter modelOfClass:[SCNNestDevicePool class]
@@ -39,7 +39,7 @@
                                                                     error:&error];
              [devicePool filterWithStructureId:weakSelf.structureId];
              weakSelf.devicesByTypeNames = [weakSelf _devicesByTypeNamesWithDevicePool:devicePool];
-         } else {
+         } else if (nil != value) {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
          if (nil != updateBlock) {

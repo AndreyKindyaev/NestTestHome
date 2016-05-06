@@ -31,13 +31,13 @@
     [self observeUrl:[NSString stringWithFormat:@"structures/%@/wheres/%@", self.structureId, self.locationId]
          updateBlock:
      ^(FDataSnapshot *snapshot) {
-         id value = snapshot.value;
+         id value = snapshot.scnValue;
          NSError *error = nil;
          if ([value isKindOfClass:[NSDictionary class]]) {
              weakSelf.location = [MTLJSONAdapter modelOfClass:[SCNNestLocation class]
                                            fromJSONDictionary:value
                                                         error:&error];
-         } else {
+         } else if (nil != value) {
              error = [NSError scnErrorWithCode:SCNErrorCodeWrongDataFormat];
          }
          if (nil != updateBlock) {
