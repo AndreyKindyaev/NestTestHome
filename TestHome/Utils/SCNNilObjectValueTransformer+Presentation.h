@@ -13,5 +13,6 @@
 + (NSString *)nilDashesStringForValue:(id)value forwardBlock:(MTLValueTransformerBlock)forwardBlock;
 + (NSString *)nilDashesUIStringForDate:(NSDate *)date;
 + (NSString *)nilDashesStringForBoolValue:(NSNumber *)boolNumber;
++ (NSString *)nilDashesStringForNumberValue:(NSNumber *)number;
 
 @end

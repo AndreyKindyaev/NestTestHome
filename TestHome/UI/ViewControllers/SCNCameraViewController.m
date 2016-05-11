@@ -45,6 +45,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     __weak typeof(self) weakSelf = self;
     self.cameraProvider = [SCNCameraDataProvider providerWithDeviceId:self.deviceId];
@@ -59,7 +60,12 @@
 #pragma mark - Actions
 - (IBAction)onIsStreamingSwitcher:(id)sender {
     self.cameraProvider.camera.isStreamingNumber = @(self.isStreamingSwitcher.on);
-    [self.cameraProvider saveCameraChangesWithCompletion:nil];
+    [self.cameraProvider saveCameraIsStreamingWithCompletion:
+     ^(NSError *error) {
+         if (nil != error) {
+             [self scnShowAlertWithError:error];
+         }
+     }];
 }
 
 - (IBAction)onSafariButton:(id)sender {
@@ -81,6 +87,7 @@
 #pragma mark - Private
 - (void)_updateCameraData {
     SCNNestCamera *camera = self.cameraProvider.camera;
+    self.navigationItem.title = camera.name;
     self.isOnlineLabel.text = camera.isOnlineString;
     if (nil != camera.isStreamingNumber) {
         self.isStreamingSwitcher.enabled = YES;

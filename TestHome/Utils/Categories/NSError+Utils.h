@@ -11,6 +11,7 @@ extern NSString *const SCNErrorDomain;
 typedef NS_ENUM(NSInteger, SCNErrorCode) {
     SCNErrorCodeWrongDataFormat = 1,
     SCNErrorCodeInvalidObserver = 2,
+    SCNErrorCodeWrongParameters = 3,
 };
 
 @interface NSError (Utils)

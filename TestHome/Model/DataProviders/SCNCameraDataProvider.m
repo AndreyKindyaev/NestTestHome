@@ -43,8 +43,10 @@
      }];
 }
 
-- (void)saveCameraChangesWithCompletion:(void(^)(NSError *error))completion {
-    [self setValue:@{@"is_streaming": self.camera.isStreamingNumber} withCompletion:completion];
+- (void)saveCameraIsStreamingWithCompletion:(void(^)(NSError *error))completion {
+    [self saveChangesForModel:self.camera
+              propertiesArray:@[@"isStreamingNumber"]
+                   completion:completion];
 }
 
 @end

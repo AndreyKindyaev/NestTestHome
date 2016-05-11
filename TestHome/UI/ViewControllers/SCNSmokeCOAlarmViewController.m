@@ -34,6 +34,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     __weak typeof(self) weakSelf = self;
     self.alarmProvider = [SCNSmokeCOAlarmDataProvider providerWithDeviceId:self.deviceId];

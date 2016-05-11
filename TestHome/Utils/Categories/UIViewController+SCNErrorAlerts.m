@@ -18,4 +18,8 @@
                         okBlock:actionBlock];
 }
 
+- (void)scnShowAlertWithError:(NSError *)error {
+    [self scnShowAlertWithError:error actionBlock:nil];
+}
+
 @end

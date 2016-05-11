@@ -16,6 +16,6 @@
 - (void)setUpdateBlock:(void(^)(NSError *error))updateBlock;
 - (SCNNestCamera *)camera;
 
-- (void)saveCameraChangesWithCompletion:(void(^)(NSError *error))completion;
+- (void)saveCameraIsStreamingWithCompletion:(void(^)(NSError *error))completion;
 
 @end

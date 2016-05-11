@@ -33,4 +33,12 @@
             }];
 }
 
++ (NSString *)nilDashesStringForNumberValue:(NSNumber *)number {
+    return [self nilDashesStringForValue:number
+                            forwardBlock:
+            ^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
+                return value.stringValue;
+            }];
+}
+
 @end

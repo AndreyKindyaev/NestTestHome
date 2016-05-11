@@ -28,6 +28,9 @@ NSString *const SCNErrorDomain = @"SCNErrorDomain";
         case SCNErrorCodeInvalidObserver:
             userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Invalid observer", nil)};
             break;
+        case SCNErrorCodeWrongParameters:
+            userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Wrong parameters", nil)};
+            break;
         default:
             break;
     }

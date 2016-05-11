@@ -54,4 +54,40 @@
      }];
 }
 
+- (void)saveChangesForModel:(id<MTLJSONSerializing>)model
+            propertiesArray:(NSArray<NSString *> *)propertiesArray
+                 completion:(void(^)(NSError *error))completion {
+    void(^safeCompletion)(NSError *) = ^(NSError *error) {
+        if (nil != completion) {
+            completion(error);
+        }
+    };
+    NSMutableDictionary *valueDictionary = [NSMutableDictionary new];
+    NSMutableSet *keysSet = [NSMutableSet setWithCapacity:propertiesArray.count];
+    NSDictionary *jsonKeyPathsByPropertyKey = [model.class JSONKeyPathsByPropertyKey];
+    for (NSString *propertyKey in propertiesArray) {
+        NSString *key = jsonKeyPathsByPropertyKey[propertyKey];
+        if (nil != key) {
+            [keysSet addObject:key];
+        }
+    }
+    NSError *error = nil;
+    NSDictionary *modelDictionary = [MTLJSONAdapter JSONDictionaryFromModel:model
+                                                                      error:&error];
+    if (nil == error) {
+        for (NSString *key in modelDictionary) {
+            if ([keysSet containsObject:key]) {
+                valueDictionary[key] = modelDictionary[key];
+            }
+        }
+        if (valueDictionary.count > 0) {
+            [self setValue:valueDictionary withCompletion:completion];
+        } else {
+            safeCompletion([NSError scnErrorWithCode:SCNErrorCodeWrongParameters]);
+        }
+    } else {
+        safeCompletion(error);
+    }
+}
+
 @end

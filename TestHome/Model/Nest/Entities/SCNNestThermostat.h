@@ -41,25 +41,28 @@ typedef NS_ENUM(NSInteger, SCNNestHVACState) {
 @property (nonatomic, strong) NSNumber *hasLeafNumber;
 
 // temperature
-@property (nonatomic) SCNNestTemperatureScale temperatureScale;
+@property (nonatomic) NSNumber *temperatureScaleNumber;
 // F
-@property (nonatomic) double targetTemparatureF;
-@property (nonatomic) double targetTemperatureHighF;
-@property (nonatomic) double targetTemperatureLowF;
-@property (nonatomic) double awayTemperatureHighF;
-@property (nonatomic) double awayTemperatureLowF;
-@property (nonatomic) double ambientTemperatureF;
+@property (nonatomic) NSNumber *targetTemperatureFNumber;
+@property (nonatomic) NSNumber *targetTemperatureHighFNumber;
+@property (nonatomic) NSNumber *targetTemperatureLowFNumber;
+@property (nonatomic) NSNumber *awayTemperatureHighFNumber;
+@property (nonatomic) NSNumber *awayTemperatureLowFNumber;
+@property (nonatomic) NSNumber *ambientTemperatureFNumber;
 // C
-@property (nonatomic) double targetTemparatureC;
-@property (nonatomic) double targetTemperatureHighC;
-@property (nonatomic) double targetTemperatureLowC;
-@property (nonatomic) double awayTemperatureHighC;
-@property (nonatomic) double awayTemperatureLowC;
-@property (nonatomic) double ambientTemperatureC;
+@property (nonatomic) NSNumber *targetTemperatureCNumber;
+@property (nonatomic) NSNumber *targetTemperatureHighCNumber;
+@property (nonatomic) NSNumber *targetTemperatureLowCNumber;
+@property (nonatomic) NSNumber *awayTemperatureHighCNumber;
+@property (nonatomic) NSNumber *awayTemperatureLowCNumber;
+@property (nonatomic) NSNumber *ambientTemperatureCNumber;
 
-@property (nonatomic) SCNNestHVACMode hvacMode;
-@property (nonatomic) SCNNestHVACState hvacState;
+@property (nonatomic) NSNumber *hvacModeNumber;
+@property (nonatomic) NSNumber *hvacStateNumber;
 
-@property (nonatomic) double humidity;
+@property (nonatomic) NSNumber *humidityNumber;
+
+- (NSArray<NSString *> *)propertiesArrayForTargetTemperature;
+- (NSArray<NSString *> *)propertiesArrayForTargetTemperatureHighLow;
 
 @end

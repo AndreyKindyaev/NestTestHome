@@ -10,6 +10,38 @@
 
 @implementation SCNNestThermostat
 
+- (NSArray<NSString *> *)propertiesArrayForTargetTemperature {
+    NSMutableArray *propertiesArray = [NSMutableArray new];
+    switch ((SCNNestTemperatureScale)self.temperatureScaleNumber.integerValue) {
+        case SCNNestTemperatureScaleC:
+            [propertiesArray addObject:@"targetTemperatureCNumber"];
+            break;
+        case SCNNestTemperatureScaleF:
+            [propertiesArray addObject:@"targetTemperatureFNumber"];
+            break;
+        default:
+            break;
+    }
+    return propertiesArray;
+}
+
+- (NSArray<NSString *> *)propertiesArrayForTargetTemperatureHighLow {
+    NSMutableArray *propertiesArray = [NSMutableArray new];
+    switch ((SCNNestTemperatureScale)self.temperatureScaleNumber.integerValue) {
+        case SCNNestTemperatureScaleC:
+            [propertiesArray addObjectsFromArray:@[@"targetTemperatureHighCNumber",
+                                                   @"targetTemperatureLowCNumber"]];
+            break;
+        case SCNNestTemperatureScaleF:
+            [propertiesArray addObjectsFromArray:@[@"targetTemperatureHighFNumber",
+                                                   @"targetTemperatureLowFNumber"]];
+            break;
+        default:
+            break;
+    }
+    return propertiesArray;
+}
+
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSMutableDictionary *dictionary = [[super JSONKeyPathsByPropertyKey] mutableCopy];
@@ -25,26 +57,26 @@
                                            @"fanTimerTimeout" : @"fan_timer_timeout",
                                            @"hasLeafNumber" : @"has_leaf",
                                            
-                                           @"temperatureScale" : @"temperature_scale",
+                                           @"temperatureScaleNumber" : @"temperature_scale",
                                            
-                                           @"targetTemparatureF" : @"target_temperature_f",
-                                           @"targetTemperatureHighF" : @"target_temperature_high_f",
-                                           @"targetTemperatureLowF" : @"target_temperature_low_f",
-                                           @"awayTemperatureHighF" : @"away_temperature_high_f",
-                                           @"awayTemperatureLowF" : @"away_temperature_low_f",
-                                           @"ambientTemperatureF" : @"ambient_temperature_f",
+                                           @"targetTemperatureFNumber" : @"target_temperature_f",
+                                           @"targetTemperatureHighFNumber" : @"target_temperature_high_f",
+                                           @"targetTemperatureLowFNumber" : @"target_temperature_low_f",
+                                           @"awayTemperatureHighFNumber" : @"away_temperature_high_f",
+                                           @"awayTemperatureLowFNumber" : @"away_temperature_low_f",
+                                           @"ambientTemperatureFNumber" : @"ambient_temperature_f",
                                            
-                                           @"targetTemparatureC" : @"target_temperature_c",
-                                           @"targetTemperatureHighC" : @"target_temperature_high_c",
-                                           @"targetTemperatureLowC" : @"target_temperature_low_c",
-                                           @"awayTemperatureHighC" : @"away_temperature_high_c",
-                                           @"awayTemperatureLowC" : @"away_temperature_low_c",
-                                           @"ambientTemperatureC" : @"ambient_temperature_c",
+                                           @"targetTemperatureCNumber" : @"target_temperature_c",
+                                           @"targetTemperatureHighCNumber" : @"target_temperature_high_c",
+                                           @"targetTemperatureLowCNumber" : @"target_temperature_low_c",
+                                           @"awayTemperatureHighCNumber" : @"away_temperature_high_c",
+                                           @"awayTemperatureLowCNumber" : @"away_temperature_low_c",
+                                           @"ambientTemperatureCNumber" : @"ambient_temperature_c",
                                            
-                                           @"hvacMode" : @"hvac_mode",
-                                           @"hvacState" : @"hvac_state",
+                                           @"hvacModeNumber" : @"hvac_mode",
+                                           @"hvacStateNumber" : @"hvac_state",
                                            
-                                           @"humidity" : @"humidity"}];
+                                           @"humidityNumber" : @"humidity"}];
     return dictionary;
 }
 
@@ -56,13 +88,13 @@
     return [MTLValueTransformer scnNestJSONDateTransformer];
 }
 
-+ (NSValueTransformer *)temperatureScaleJSONTransformer {
++ (NSValueTransformer *)temperatureScaleNumberJSONTransformer {
     NSDictionary *dictionary = @{@"F": @(SCNNestTemperatureScaleF),
                                  @"C": @(SCNNestTemperatureScaleC)};
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:dictionary];
 }
 
-+ (NSValueTransformer *)hvacModeJSONTransformer {
++ (NSValueTransformer *)hvacModeNumberJSONTransformer {
     NSDictionary *dictionary = @{@"heat": @(SCNNestHVACModeHeat),
                                  @"cool": @(SCNNestHVACModeCool),
                                  @"heat-cool": @(SCNNestHVACModeHeatCool),
@@ -70,7 +102,7 @@
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:dictionary];
 }
 
-+ (NSValueTransformer *)hvacStateJSONTransformer {
++ (NSValueTransformer *)hvacStateNumberJSONTransformer {
     NSDictionary *dictionary = @{@"heating": @(SCNNestHVACStateHeating),
                                  @"cooling": @(SCNNestHVACStateCooling),
                                  @"off": @(SCNNestHVACStateOff)};

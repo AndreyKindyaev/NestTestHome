@@ -11,6 +11,10 @@
 @interface SCNDataProvider : NSObject
 
 - (void)observeUrl:(NSString *)url updateBlock:(void(^)(FDataSnapshot *snapshot))updateBlock;
+
 - (void)setValue:(id)value withCompletion:(void(^)(NSError *error))completion;
+- (void)saveChangesForModel:(id<MTLJSONSerializing>)model
+            propertiesArray:(NSArray<NSString *> *)propertiesArray
+                 completion:(void(^)(NSError *error))completion;
 
 @end

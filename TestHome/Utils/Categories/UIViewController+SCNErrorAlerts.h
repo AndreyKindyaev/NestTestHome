@@ -11,4 +11,6 @@
 - (void)scnShowAlertWithError:(NSError *)error
                   actionBlock:(void(^)())actionBlock;
 
+- (void)scnShowAlertWithError:(NSError *)error;
+
 @end
