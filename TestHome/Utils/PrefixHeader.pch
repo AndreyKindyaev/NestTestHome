@@ -32,9 +32,13 @@
     #import "UIViewController+SCNErrorAlerts.h"
     #import "NSDate+SCNAppDates.h"
     #import "FDataSnapshot+SCNValidation.h"
+    #import "UIApplication+SCNOpenUrl.h"
 
     // presentation
+    #import "SCNNilObjectValueTransformer+Presentation.h"
     #import "SCNNestDevice+Presentation.h"
     #import "SCNNestSmokeCOAlarm+Presentation.h"
+    #import "SCNNestCamera+Presentation.h"
+    #import "SCNNestCameraEvent+Presentation.h"
 
 #endif /* PrefixHeader_pch */

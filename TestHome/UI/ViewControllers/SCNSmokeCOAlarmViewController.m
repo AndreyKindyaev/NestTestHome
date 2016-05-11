@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     __weak typeof(self) weakSelf = self;
     self.alarmProvider = [SCNSmokeCOAlarmDataProvider providerWithDeviceId:self.deviceId];

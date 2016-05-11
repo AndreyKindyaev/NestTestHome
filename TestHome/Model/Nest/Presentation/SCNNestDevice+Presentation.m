@@ -8,13 +8,11 @@
 
 #import "SCNNestDevice+Presentation.h"
 
-#import "SCNNilObjectValueTransformer.h"
-
 @implementation SCNNestDevice (Presentation)
 
 - (NSString *)isOnlineString {
     return [SCNNilObjectValueTransformer transformedValue:self.isOnlineNumber
-                                     usingForwardNilValue:@"Unknown"
+                                     usingForwardNilValue:@"--"
                                              forwardBlock:
             ^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
                 return value.boolValue ? @"Online" : @"Offline";

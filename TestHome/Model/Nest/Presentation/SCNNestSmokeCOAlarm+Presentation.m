@@ -8,8 +8,6 @@
 
 #import "SCNNestSmokeCOAlarm+Presentation.h"
 
-#import "SCNNilObjectValueTransformer.h"
-
 @implementation SCNNestSmokeCOAlarm (Presentation)
 
 - (UIColor *)color {
@@ -22,60 +20,46 @@
 }
 
 - (NSString *)batteryHealthString {
-    return [self _stringForValue:self.batteryHealthNumber
-                    forwardBlock:
+    return [SCNNilObjectValueTransformer nilDashesStringForValue:self.batteryHealthNumber
+                                                    forwardBlock:
             ^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
                 return [self _batteryHealtsStringByState:value.integerValue];
             }];
 }
 
 - (NSString *)coAlarmStateString {
-    return [self _stringForValue:self.coAlarmStateNumber
-                    forwardBlock:
+    return [SCNNilObjectValueTransformer nilDashesStringForValue:self.coAlarmStateNumber
+                                                    forwardBlock:
             ^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
                 return [self _coAlarmStringByState:value.integerValue];
             }];
 }
 
 - (NSString *)smokeAlarmStateString {
-    return [self _stringForValue:self.smokeAlarmStateNumber
-                    forwardBlock:
+    return [SCNNilObjectValueTransformer nilDashesStringForValue:self.smokeAlarmStateNumber
+                                                    forwardBlock:
             ^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
                 return [self _smokeAlarmStringByState:value.integerValue];
             }];
 }
 
 - (NSString *)manualTestActiveString {
-    return [self _stringForValue:self.isManualTestActiveNumber
-                    forwardBlock:
+    return [SCNNilObjectValueTransformer nilDashesStringForValue:self.isManualTestActiveNumber
+                                                    forwardBlock:
             ^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
                 return value.boolValue ? @"Active" : @"Inactive";
             }];
 }
 
 - (NSString *)lastConnectionDateString {
-    return [self _stringForDate:self.lastConnectionDate];
+    return [SCNNilObjectValueTransformer nilDashesUIStringForDate:self.lastConnectionDate];
 }
 
 - (NSString *)lastManualTestTimeString {
-    return [self _stringForDate:self.lastManualTestTime];
+    return [SCNNilObjectValueTransformer nilDashesUIStringForDate:self.lastManualTestTime];
 }
 
 #pragma mark - Private
-- (NSString *)_stringForValue:(id)value forwardBlock:(MTLValueTransformerBlock)forwardBlock {
-    return [SCNNilObjectValueTransformer transformedValue:value
-                                     usingForwardNilValue:@"Unknown"
-                                             forwardBlock:forwardBlock];
-}
-
-- (NSString *)_stringForDate:(NSDate *)date {
-    return [self _stringForValue:date
-                    forwardBlock:
-            ^id(NSDate *value, BOOL *success, NSError *__autoreleasing *error) {
-                return value.scnUIString;
-            }];
-}
-
 - (UIColor *)_colorByState:(SCNNestAlarmColorState)state {
     UIColor *color = nil;
     switch (state) {

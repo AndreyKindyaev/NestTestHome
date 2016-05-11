@@ -16,6 +16,9 @@
 		D2AC10D41CD7B64200EE1AE3 /* SCNNestAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC10D31CD7B64200EE1AE3 /* SCNNestAuthManager.m */; settings = {ASSET_TAGS = (); }; };
 		D2D078C01CDC85C4008C225A /* SCNNilObjectValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D078BF1CDC85C4008C225A /* SCNNilObjectValueTransformer.m */; settings = {ASSET_TAGS = (); }; };
 		D2D078C31CDCCD83008C225A /* FDataSnapshot+SCNValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D078C21CDCCD83008C225A /* FDataSnapshot+SCNValidation.m */; settings = {ASSET_TAGS = (); }; };
+		D2D078C61CDCD0EA008C225A /* SCNCameraDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D078C51CDCD0EA008C225A /* SCNCameraDataProvider.m */; settings = {ASSET_TAGS = (); }; };
+		D2D078C91CDCF2BD008C225A /* UIApplication+SCNOpenUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D078C81CDCF2BD008C225A /* UIApplication+SCNOpenUrl.m */; settings = {ASSET_TAGS = (); }; };
+		D2D078CC1CDCF759008C225A /* SCNNestCamera+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D078CB1CDCF759008C225A /* SCNNestCamera+Presentation.m */; settings = {ASSET_TAGS = (); }; };
 		D2DA15D01CD9EA6200CF6842 /* SCNNestStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA15CF1CD9EA6200CF6842 /* SCNNestStructure.m */; settings = {ASSET_TAGS = (); }; };
 		D2DA15D31CD9ECA800CF6842 /* SCNNestLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA15D21CD9ECA800CF6842 /* SCNNestLocation.m */; settings = {ASSET_TAGS = (); }; };
 		D2DA15D61CD9EDD500CF6842 /* SCNNestThermostat.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA15D51CD9EDD500CF6842 /* SCNNestThermostat.m */; settings = {ASSET_TAGS = (); }; };
@@ -51,6 +54,8 @@
 		D2DE36091CDB794100885E82 /* NSDate+SCNAppDates.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DE36081CDB794100885E82 /* NSDate+SCNAppDates.m */; settings = {ASSET_TAGS = (); }; };
 		D2DE36141CDB850F00885E82 /* SCNNestDevice+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DE36131CDB850F00885E82 /* SCNNestDevice+Presentation.m */; settings = {ASSET_TAGS = (); }; };
 		D2DE36171CDB860C00885E82 /* SCNNestSmokeCOAlarm+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DE36161CDB860C00885E82 /* SCNNestSmokeCOAlarm+Presentation.m */; settings = {ASSET_TAGS = (); }; };
+		D2E010791CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E010781CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.m */; settings = {ASSET_TAGS = (); }; };
+		D2E0107C1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E0107B1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.m */; settings = {ASSET_TAGS = (); }; };
 		D2E2D8A71CD79E7F00A97143 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E2D8A61CD79E7F00A97143 /* main.m */; };
 		D2E2D8AA1CD79E7F00A97143 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E2D8A91CD79E7F00A97143 /* AppDelegate.m */; };
 		D2E2D8B01CD79E7F00A97143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E2D8AE1CD79E7F00A97143 /* Main.storyboard */; };
@@ -78,6 +83,12 @@
 		D2D078BF1CDC85C4008C225A /* SCNNilObjectValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNNilObjectValueTransformer.m; sourceTree = "<group>"; };
 		D2D078C11CDCCD83008C225A /* FDataSnapshot+SCNValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FDataSnapshot+SCNValidation.h"; sourceTree = "<group>"; };
 		D2D078C21CDCCD83008C225A /* FDataSnapshot+SCNValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FDataSnapshot+SCNValidation.m"; sourceTree = "<group>"; };
+		D2D078C41CDCD0EA008C225A /* SCNCameraDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNCameraDataProvider.h; sourceTree = "<group>"; };
+		D2D078C51CDCD0EA008C225A /* SCNCameraDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNCameraDataProvider.m; sourceTree = "<group>"; };
+		D2D078C71CDCF2BD008C225A /* UIApplication+SCNOpenUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SCNOpenUrl.h"; sourceTree = "<group>"; };
+		D2D078C81CDCF2BD008C225A /* UIApplication+SCNOpenUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SCNOpenUrl.m"; sourceTree = "<group>"; };
+		D2D078CA1CDCF759008C225A /* SCNNestCamera+Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCNNestCamera+Presentation.h"; sourceTree = "<group>"; };
+		D2D078CB1CDCF759008C225A /* SCNNestCamera+Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNNestCamera+Presentation.m"; sourceTree = "<group>"; };
 		D2DA15CE1CD9EA6200CF6842 /* SCNNestStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNNestStructure.h; sourceTree = "<group>"; };
 		D2DA15CF1CD9EA6200CF6842 /* SCNNestStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNNestStructure.m; sourceTree = "<group>"; };
 		D2DA15D11CD9ECA800CF6842 /* SCNNestLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNNestLocation.h; sourceTree = "<group>"; };
@@ -148,6 +159,10 @@
 		D2DE36131CDB850F00885E82 /* SCNNestDevice+Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNNestDevice+Presentation.m"; sourceTree = "<group>"; };
 		D2DE36151CDB860C00885E82 /* SCNNestSmokeCOAlarm+Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCNNestSmokeCOAlarm+Presentation.h"; sourceTree = "<group>"; };
 		D2DE36161CDB860C00885E82 /* SCNNestSmokeCOAlarm+Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNNestSmokeCOAlarm+Presentation.m"; sourceTree = "<group>"; };
+		D2E010771CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCNNestCameraEvent+Presentation.h"; sourceTree = "<group>"; };
+		D2E010781CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNNestCameraEvent+Presentation.m"; sourceTree = "<group>"; };
+		D2E0107A1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCNNilObjectValueTransformer+Presentation.h"; sourceTree = "<group>"; };
+		D2E0107B1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNNilObjectValueTransformer+Presentation.m"; sourceTree = "<group>"; };
 		D2E2D8A21CD79E7F00A97143 /* TestHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E2D8A61CD79E7F00A97143 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2E2D8A81CD79E7F00A97143 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -252,6 +267,8 @@
 				D2DE35F01CDB28BF00885E82 /* PrefixHeader.pch */,
 				D2D078BE1CDC85C4008C225A /* SCNNilObjectValueTransformer.h */,
 				D2D078BF1CDC85C4008C225A /* SCNNilObjectValueTransformer.m */,
+				D2E0107A1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.h */,
+				D2E0107B1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -283,6 +300,8 @@
 				D2DE36081CDB794100885E82 /* NSDate+SCNAppDates.m */,
 				D2D078C11CDCCD83008C225A /* FDataSnapshot+SCNValidation.h */,
 				D2D078C21CDCCD83008C225A /* FDataSnapshot+SCNValidation.m */,
+				D2D078C71CDCF2BD008C225A /* UIApplication+SCNOpenUrl.h */,
+				D2D078C81CDCF2BD008C225A /* UIApplication+SCNOpenUrl.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -304,6 +323,8 @@
 				D2DE36021CDB53FF00885E82 /* SCNDataProvider.m */,
 				D2DE36041CDB67EC00885E82 /* SCNLocationDataProvider.h */,
 				D2DE36051CDB67EC00885E82 /* SCNLocationDataProvider.m */,
+				D2D078C41CDCD0EA008C225A /* SCNCameraDataProvider.h */,
+				D2D078C51CDCD0EA008C225A /* SCNCameraDataProvider.m */,
 			);
 			path = DataProviders;
 			sourceTree = "<group>";
@@ -362,6 +383,10 @@
 				D2DE36131CDB850F00885E82 /* SCNNestDevice+Presentation.m */,
 				D2DE36151CDB860C00885E82 /* SCNNestSmokeCOAlarm+Presentation.h */,
 				D2DE36161CDB860C00885E82 /* SCNNestSmokeCOAlarm+Presentation.m */,
+				D2D078CA1CDCF759008C225A /* SCNNestCamera+Presentation.h */,
+				D2D078CB1CDCF759008C225A /* SCNNestCamera+Presentation.m */,
+				D2E010771CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.h */,
+				D2E010781CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.m */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -534,6 +559,7 @@
 				D2DE36061CDB67EC00885E82 /* SCNLocationDataProvider.m in Sources */,
 				D2DA15D31CD9ECA800CF6842 /* SCNNestLocation.m in Sources */,
 				D2E2D8AA1CD79E7F00A97143 /* AppDelegate.m in Sources */,
+				D2E0107C1CE31D1600CD1F86 /* SCNNilObjectValueTransformer+Presentation.m in Sources */,
 				D2DA16001CDA41BD00CF6842 /* UITableView+SCNUtils.m in Sources */,
 				D2DA15D61CD9EDD500CF6842 /* SCNNestThermostat.m in Sources */,
 				D2DE35FA1CDB424300885E82 /* SCNThermostatViewController.m in Sources */,
@@ -544,11 +570,13 @@
 				D20BF0501CDAA36C007BC0FF /* UIViewController+SCNErrorAlerts.m in Sources */,
 				D2DE35F31CDB2E4300885E82 /* SCNNestDevicePool.m in Sources */,
 				D2DA16171CDA434200CF6842 /* UIView+SCNUtils.m in Sources */,
+				D2D078C91CDCF2BD008C225A /* UIApplication+SCNOpenUrl.m in Sources */,
 				D2DA15E71CDA026800CF6842 /* SCNNestCameraEvent.m in Sources */,
 				D2DA16101CDA42D300CF6842 /* SCNStructuresViewController.m in Sources */,
 				D2D078C01CDC85C4008C225A /* SCNNilObjectValueTransformer.m in Sources */,
 				D2DA15D01CD9EA6200CF6842 /* SCNNestStructure.m in Sources */,
 				D2AC10D41CD7B64200EE1AE3 /* SCNNestAuthManager.m in Sources */,
+				D2D078CC1CDCF759008C225A /* SCNNestCamera+Presentation.m in Sources */,
 				D2DA16211CDA600E00CF6842 /* SCNAwayDataProvider.m in Sources */,
 				D2DA15E11CD9F92700CF6842 /* NSString+SCNNest.m in Sources */,
 				D2E2D8A71CD79E7F00A97143 /* main.m in Sources */,
@@ -565,12 +593,14 @@
 				D2DA15EA1CDA0C1500CF6842 /* MTLJSONAdapter+SCNNest.m in Sources */,
 				D2DA16141CDA42ED00CF6842 /* SCNLockView.m in Sources */,
 				D2DA15DE1CD9F7FC00CF6842 /* NSDateFormatter+SCNNest.m in Sources */,
+				D2E010791CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.m in Sources */,
 				D2DA15D91CD9F07F00CF6842 /* SCNNestDevice.m in Sources */,
 				D2DE36091CDB794100885E82 /* NSDate+SCNAppDates.m in Sources */,
 				D2DA15E41CD9FA8C00CF6842 /* MTLValueTransformer+SCNNest.m in Sources */,
 				D2DE35F71CDB422300885E82 /* SCNCameraViewController.m in Sources */,
 				D2AC10CD1CD7AEC800EE1AE3 /* SCNNestAuthToken.m in Sources */,
 				D2DA15FA1CDA323F00CF6842 /* SCNStructuresDataProvider.m in Sources */,
+				D2D078C61CDCD0EA008C225A /* SCNCameraDataProvider.m in Sources */,
 				D2DA160E1CDA42D300CF6842 /* SCNDevicesViewController.m in Sources */,
 				D2DE36001CDB4EF500885E82 /* SCNSmokeCOAlarmDataProvider.m in Sources */,
 				D2DA160F1CDA42D300CF6842 /* SCNLoginViewController.m in Sources */,
