@@ -41,5 +41,6 @@
     #import "SCNNestCamera+Presentation.h"
     #import "SCNNestCameraEvent+Presentation.h"
     #import "SCNNestThermostat+Presentation.h"
+    #import "SCNNestStructure+Presentation.h"
 
 #endif /* PrefixHeader_pch */

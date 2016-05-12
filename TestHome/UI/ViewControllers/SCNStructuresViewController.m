@@ -23,7 +23,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Structures";
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     [self.tableView scnHideEmptySeparators];
     
     [self.view scnShowLockViewWithText:@"Loading"];
@@ -45,8 +44,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SCNNestStructure *structure = [self _structureAtIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StructureCellId"];
     cell.textLabel.text = structure.name;
+    cell.detailTextLabel.text = structure.awayString;
+    cell.detailTextLabel.textColor = structure.awayColor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = (([[SCNSettings sharedInstance].activeStructureId isEqualToString:structure.structureId])
                           ? UITableViewCellAccessoryCheckmark

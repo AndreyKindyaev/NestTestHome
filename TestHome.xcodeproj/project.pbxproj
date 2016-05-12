@@ -11,6 +11,7 @@
 		D20BF04D1CDAA270007BC0FF /* UIViewController+SCNAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = D20BF04C1CDAA270007BC0FF /* UIViewController+SCNAlerts.m */; settings = {ASSET_TAGS = (); }; };
 		D20BF0501CDAA36C007BC0FF /* UIViewController+SCNErrorAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = D20BF04F1CDAA36C007BC0FF /* UIViewController+SCNErrorAlerts.m */; settings = {ASSET_TAGS = (); }; };
 		D263E1A91CD8EE5B00615E5F /* SCNNestFirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D263E1A81CD8EE5B00615E5F /* SCNNestFirebaseManager.m */; settings = {ASSET_TAGS = (); }; };
+		D2968E911CE483FE00529DF5 /* SCNNestStructure+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2968E901CE483FE00529DF5 /* SCNNestStructure+Presentation.m */; settings = {ASSET_TAGS = (); }; };
 		D2AC10CD1CD7AEC800EE1AE3 /* SCNNestAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC10CC1CD7AEC800EE1AE3 /* SCNNestAuthToken.m */; settings = {ASSET_TAGS = (); }; };
 		D2AC10D11CD7B4D700EE1AE3 /* SCNNestCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC10D01CD7B4D700EE1AE3 /* SCNNestCamera.m */; settings = {ASSET_TAGS = (); }; };
 		D2AC10D41CD7B64200EE1AE3 /* SCNNestAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC10D31CD7B64200EE1AE3 /* SCNNestAuthManager.m */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +76,8 @@
 		D20BF04F1CDAA36C007BC0FF /* UIViewController+SCNErrorAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SCNErrorAlerts.m"; sourceTree = "<group>"; };
 		D263E1A71CD8EE5B00615E5F /* SCNNestFirebaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNNestFirebaseManager.h; sourceTree = "<group>"; };
 		D263E1A81CD8EE5B00615E5F /* SCNNestFirebaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNNestFirebaseManager.m; sourceTree = "<group>"; };
+		D2968E8F1CE483FE00529DF5 /* SCNNestStructure+Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCNNestStructure+Presentation.h"; sourceTree = "<group>"; };
+		D2968E901CE483FE00529DF5 /* SCNNestStructure+Presentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNNestStructure+Presentation.m"; sourceTree = "<group>"; };
 		D2AC10CB1CD7AEC800EE1AE3 /* SCNNestAuthToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNNestAuthToken.h; sourceTree = "<group>"; };
 		D2AC10CC1CD7AEC800EE1AE3 /* SCNNestAuthToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNNestAuthToken.m; sourceTree = "<group>"; };
 		D2AC10CF1CD7B4D700EE1AE3 /* SCNNestCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNNestCamera.h; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				D2E010781CE31BFB00CD1F86 /* SCNNestCameraEvent+Presentation.m */,
 				D2E010801CE3569300CD1F86 /* SCNNestThermostat+Presentation.h */,
 				D2E010811CE3569300CD1F86 /* SCNNestThermostat+Presentation.m */,
+				D2968E8F1CE483FE00529DF5 /* SCNNestStructure+Presentation.h */,
+				D2968E901CE483FE00529DF5 /* SCNNestStructure+Presentation.m */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				D2DA15FA1CDA323F00CF6842 /* SCNStructuresDataProvider.m in Sources */,
 				D2D078C61CDCD0EA008C225A /* SCNCameraDataProvider.m in Sources */,
 				D2DA160E1CDA42D300CF6842 /* SCNDevicesViewController.m in Sources */,
+				D2968E911CE483FE00529DF5 /* SCNNestStructure+Presentation.m in Sources */,
 				D2DE36001CDB4EF500885E82 /* SCNSmokeCOAlarmDataProvider.m in Sources */,
 				D2DA160F1CDA42D300CF6842 /* SCNLoginViewController.m in Sources */,
 				D2DE35EF1CDB238A00885E82 /* SCNDevicesDataProvider.m in Sources */,

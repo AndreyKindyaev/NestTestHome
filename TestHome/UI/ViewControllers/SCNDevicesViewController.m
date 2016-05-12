@@ -141,14 +141,14 @@ static NSString *const kSegueIdSmokeCOAlarm = @"SCNDevicesToSmokeCOAlarm";
 - (void)_updateAway {
     switch (self.awayProvider.away) {
         case SCNNestAwayStateHome:
-            self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
+            self.navigationController.navigationBar.barTintColor = [SCNNestStructure colorForAwayState:SCNNestAwayStateHome];
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Away"
                                                                                       style:UIBarButtonItemStylePlain
                                                                                      target:self
                                                                                      action:@selector(onAway:)];
             break;
         case SCNNestAwayStateAway:
-            self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+            self.navigationController.navigationBar.barTintColor = [SCNNestStructure colorForAwayState:SCNNestAwayStateAway];
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home"
                                                                                       style:UIBarButtonItemStylePlain
                                                                                      target:self
