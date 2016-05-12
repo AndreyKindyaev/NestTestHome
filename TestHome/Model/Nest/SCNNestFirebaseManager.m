@@ -48,6 +48,7 @@
    withObserverKey:(NSString *)key
        updateBlock:(void (^)(FDataSnapshot *snapshot))block {
     void(^safeUpdateBlock)(FDataSnapshot *) = ^(FDataSnapshot *snapshot) {
+        SCNLog(@"url: %@ value: %@", url, snapshot.value);
         if (nil != block) {
             block(snapshot);
         }
