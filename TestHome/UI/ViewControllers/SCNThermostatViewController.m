@@ -177,6 +177,7 @@
     }
     [self _updateTemperatureValues];
     if (![self.locationId isEqualToString:thermostat.locationId]) {
+        self.locationId = thermostat.locationId;
         __weak typeof(self) weakSelf = self;
         self.locationProvider = [SCNLocationDataProvider providerWithLocationId:thermostat.locationId
                                                                     structureId:thermostat.structureId];

@@ -32,20 +32,20 @@
     return [MTLValueTransformer scnNestJSONDateTransformer];
 }
 
-+ (NSValueTransformer *)batteryHealthJSONTransformer {
++ (NSValueTransformer *)batteryHealthNumberJSONTransformer {
     NSDictionary *dictionary = @{@"ok": @(SCNNestBatteryHealthOk),
                                  @"replace": @(SCNNestBatteryHealthReplace)};
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:dictionary];
 }
 
-+ (NSValueTransformer *)coAlarmStateJSONTransformer {
++ (NSValueTransformer *)coAlarmStateNumberJSONTransformer {
     NSDictionary *dictionary = @{@"ok": @(SCNNestCOAlarmStateOk),
                                  @"warning": @(SCNNestCOAlarmStateWarning),
                                  @"emergency": @(SCNNestCOAlarmStateEmergency)};
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:dictionary];
 }
 
-+ (NSValueTransformer *)smokeAlarmStateJSONTransformer {
++ (NSValueTransformer *)smokeAlarmStateNumberJSONTransformer {
     NSDictionary *dictionary = @{@"ok": @(SCNNestSmokeAlarmStateOk),
                                  @"warning": @(SCNNestSmokeAlarmStateWarning),
                                  @"emergency": @(SCNNestSmokeAlarmStateEmergency)};
@@ -56,7 +56,7 @@
     return [MTLValueTransformer scnNestJSONDateTransformer];
 }
 
-+ (NSValueTransformer *)uiColorStateJSONTransformer {
++ (NSValueTransformer *)uiColorStateNumberJSONTransformer {
     NSDictionary *dictionary = @{@"gray": @(SCNNestAlarmColorStateGray),
                                  @"green": @(SCNNestAlarmColorStateGreen),
                                  @"yellow": @(SCNNestAlarmColorStateYellow),

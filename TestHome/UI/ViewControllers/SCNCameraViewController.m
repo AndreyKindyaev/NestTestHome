@@ -99,6 +99,7 @@
     self.lastIsOnlineChangeLabel.text = camera.lastIsOnlineChangeString;
     self.isVideoHistoryEnabledLabel.text = camera.isVideoHistoryEnabledString;
     if (![self.locationId isEqualToString:camera.locationId]) {
+        self.locationId = camera.locationId;
         __weak typeof(self) weakSelf = self;
         self.locationProvider = [SCNLocationDataProvider providerWithLocationId:camera.locationId
                                                                     structureId:camera.structureId];

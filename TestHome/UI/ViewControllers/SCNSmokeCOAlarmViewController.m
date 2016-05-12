@@ -59,6 +59,7 @@
     self.isManualTestActiveLabel.text = alarm.manualTestActiveString;
     self.lastManualTestTimeLabel.text = alarm.lastManualTestTimeString;
     if (![self.locationId isEqualToString:alarm.locationId]) {
+        self.locationId = alarm.locationId;
         __weak typeof(self) weakSelf = self;
         self.locationProvider = [SCNLocationDataProvider providerWithLocationId:alarm.locationId
                                                                     structureId:alarm.structureId];

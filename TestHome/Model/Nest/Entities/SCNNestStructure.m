@@ -23,10 +23,6 @@
              @"locations": @"wheres"};
 }
 
-+ (NSValueTransformer *)lastIsOnlineChangeJSONTransformer {
-    return [MTLValueTransformer scnNestJSONDateTransformer];
-}
-
 + (NSValueTransformer *)locationsJSONTransformer {
     return [MTLJSONAdapter scnNestIdEntityDictionaryTransformerWithModelsOfClass:[SCNNestLocation class]];
 }
