@@ -105,6 +105,7 @@
             [currentData setValue:value];
             return [FTransactionResult successWithValue:currentData];
         } andCompletionBlock:^(NSError *error, BOOL committed, FDataSnapshot *snapshot) {
+            SCNLog(@"transaction has completed with error: %@ commited: %@ value: %@", error ?: @"--", committed ? @"YES" : @"NO", snapshot.value);
             if (nil != completion) {
                 completion(error);
             }
