@@ -83,6 +83,15 @@ static NSString *const kAccessTokenKey = @"AccessTokenKey";
     return [[url host] isEqualToString:[redirectUrl host]];
 }
 
+- (void)logout {
+    [self _setLocalAuthToken:nil];
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookies = [storage cookies];
+    for (NSHTTPCookie *cookie in cookies) {
+        [storage deleteCookie:cookie];
+    }
+}
+
 #pragma mark - Private
 - (NSString *)_accessTokenUrlStringWithAuthCode:(NSString *)authCode {
     return [NSString stringWithFormat:@"http://api.%@/oauth2/access_token?code=%@&client_id=%@&client_secret=%@&grant_type=authorization_code", kNestAPIDomain, authCode, kNestClientId, kNestClientSecret];
@@ -98,9 +107,14 @@ static NSString *const kAccessTokenKey = @"AccessTokenKey";
 }
 
 - (void)_setLocalAuthToken:(SCNNestAuthToken *)token {
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:token];
-    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:kAccessTokenKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    if (nil != token) {
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:token];
+        [standardUserDefaults setObject:encodedObject forKey:kAccessTokenKey];
+    } else {
+        [standardUserDefaults removeObjectForKey:kAccessTokenKey];
+    }
+    [standardUserDefaults synchronize];
 }
 
 @end

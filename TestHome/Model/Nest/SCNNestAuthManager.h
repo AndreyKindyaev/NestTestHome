@@ -16,4 +16,6 @@
 - (void)getTokenByAuthCode:(NSString *)authCode completion:(void(^)(NSError *error))completion;
 - (BOOL)isRedirectUrl:(NSURL *)url;
 
+- (void)logout;
+
 @end

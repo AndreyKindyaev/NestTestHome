@@ -10,6 +10,7 @@
 
 #import "SCNStructuresDataProvider.h"
 #import "SCNSettings.h"
+#import "SCNNestAuthManager.h"
 
 @interface SCNStructuresViewController ()
 
@@ -23,6 +24,10 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Structures";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(onLogout:)];
     [self.tableView scnHideEmptySeparators];
     
     [self.view scnShowLockViewWithText:@"Loading"];
@@ -60,6 +65,12 @@
     [SCNSettings sharedInstance].activeStructureId = [self _structureAtIndexPath:indexPath].structureId;
     [tableView reloadData];
     self.tabBarController.selectedIndex = 1;
+}
+
+#pragma mark - Actions
+- (IBAction)onLogout:(id)sender {
+    [[SCNNestAuthManager sharedInstance] logout];
+    [self performSegueWithIdentifier:@"SCNStucturesToLogin" sender:self];
 }
 
 #pragma mark - Private

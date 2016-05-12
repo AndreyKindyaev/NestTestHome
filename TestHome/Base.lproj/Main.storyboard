@@ -1171,6 +1171,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Structures" id="XXy-ix-0bh"/>
                     <navigationItem key="navigationItem" id="66g-SC-Jr2"/>
+                    <connections>
+                        <segue destination="sHr-By-k0g" kind="custom" identifier="SCNStucturesToLogin" customClass="SCNReplaceSegue" id="xZ9-QP-FmQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P36-SB-f6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
